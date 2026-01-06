@@ -22,7 +22,8 @@ module.exports = {
    inputValidation: {
       key: { string: true, required: true },
       data: { object: true, required: true },
-      requestID: { string: true, optional: true }, // Needed to prevent duplicates if the request is retried
+      requestID: { string: true, optional: true },
+      // .requestID: Needed to prevent duplicates if the request is retried
       rowLogID: { string: { uuid: true }, optional: true },
       // email: { string: { email: true }, optional: true },
    },
@@ -56,7 +57,9 @@ module.exports = {
                      : undefined;
                   // allTriggers.push(retryTrigger(t, data, req));
                   allTriggers.push(
-                     req.retry(() => t.trigger(data, req, instanceKey, rowLogID))
+                     req.retry(() =>
+                        t.trigger(data, req, instanceKey, rowLogID),
+                     ),
                   );
                }
             });
@@ -66,7 +69,7 @@ module.exports = {
                   req.log(
                      `triggered ${allTriggers.length} task${
                         allTriggers.length != 1 ? "s" : ""
-                     }`
+                     }`,
                   );
                   cb(null, allTriggers.length);
                })
