@@ -9,7 +9,7 @@
     "@digiserve/ab-utils": "^1.9.1",
     "cote": "^1.0.2",
     "knex": "^0.95.15",
-    "lodash": "^4.17.21",
+    "lodash": "^4.17.23",
     "moment": "^2.29.4",
     "node-cron": "^3.0.0",
     "objection": "github:Hiro-Nakamura/objection.js#fixDBErrors",
