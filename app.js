@@ -46,7 +46,7 @@ controller.afterStartup(async (req, cb) => {
       return cb(err);
    }
 });
-// controller.beforeShutdown((cb)=>{ return cb(/* err */) });
+// controller.beforeShutdown((req, cb)=>{ return cb(/* err */) });
 
 controller.waitForDB = true;
 // {bool} wait for mysql to be accessible before .init() is processed
