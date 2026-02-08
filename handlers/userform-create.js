@@ -73,8 +73,7 @@ module.exports = {
          }
 
          let users = req.param("users");
-         if (users && !Array.isArray(users))
-            users = [users];
+         if (users && !Array.isArray(users)) users = [users];
 
          if (users?.length > 0) {
             newForm.users = users;
@@ -111,7 +110,7 @@ module.exports = {
                            ],
                         },
                         populate: false,
-                     })
+                     }),
                )) ?? [];
 
             if (usersFound.length == 0) {
@@ -124,7 +123,7 @@ module.exports = {
                      scopeOuery: newForm.scopeQuery,
                      users,
                      roles,
-                  }
+                  },
                );
             }
             newForm.users = usersFound.map((u) => u.username);
@@ -146,7 +145,7 @@ module.exports = {
                const dataClone = { ...form.data };
                dataClone.url = url;
                form = await req.retry(() =>
-                  formModel.update(form.uuid, { data: dataClone })
+                  formModel.update(form.uuid, { data: dataClone }),
                );
             }
 

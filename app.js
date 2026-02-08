@@ -9,7 +9,7 @@ if (AB.defaults.env("TELEMETRY_PROVIDER", "sentry") == "sentry") {
    AB.telemetry.init("sentry", {
       dsn: AB.defaults.env(
          "SENTRY_DSN",
-         "https://ff0af8f37828480d7791c2e58c0682a3@o144358.ingest.sentry.io/4506143282298880"
+         "https://ff0af8f37828480d7791c2e58c0682a3@o144358.ingest.sentry.io/4506143282298880",
       ),
       release: version,
    });
@@ -32,7 +32,7 @@ controller.afterStartup(async (req, cb) => {
             user: { languageCode: "en", username: "_system_" },
          });
          listeners.push(
-            tReq.serviceRequest("process_manager.initialize_timer", {})
+            tReq.serviceRequest("process_manager.initialize_timer", {}),
          );
       });
 

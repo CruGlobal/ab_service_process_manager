@@ -48,7 +48,7 @@ module.exports = {
             req.retry(() =>
                AB.objectProcessInstance()
                   .model()
-                  .find({ uuid: instanceID }, req)
+                  .find({ uuid: instanceID }, req),
             ).then((list) => {
                var allResets = [];
 
@@ -57,7 +57,7 @@ module.exports = {
                   var processPI = AB.processByID(pi.processID);
                   if (!processPI) {
                      var piError = new Error(
-                        "ProcessInstance could not find parent Process"
+                        "ProcessInstance could not find parent Process",
                      );
                      AB.notify.builder(piError, {
                         instanceID,
@@ -69,7 +69,7 @@ module.exports = {
 
                   // perform the reset()
                   allResets.push(
-                     req.retry(() => processPI.instanceReset(pi, taskID, req))
+                     req.retry(() => processPI.instanceReset(pi, taskID, req)),
                   );
                });
 
@@ -78,7 +78,7 @@ module.exports = {
                      req.log(
                         `reset ${allResets.length} task${
                            allResets.length != 1 ? "s" : ""
-                        }`
+                        }`,
                      );
                      cb(null, allResets.length);
                   })

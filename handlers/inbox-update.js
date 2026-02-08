@@ -56,7 +56,7 @@ module.exports = {
                   response,
                   responder: user,
                   status: "processed",
-               })
+               }),
             )
                .then((list) => {
                   // respond to the API now:
@@ -73,7 +73,7 @@ module.exports = {
                               instanceID: list.process,
                            });
                         }
-                     }
+                     },
                   );
                })
                .catch((err) => {

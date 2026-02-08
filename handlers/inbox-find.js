@@ -62,7 +62,7 @@ module.exports = {
             req.log("Error: no user or role provided in query.");
 
             const invalidInputError = new Error(
-               "Invalid Inputs. Provide either a user or a role."
+               "Invalid Inputs. Provide either a user or a role.",
             );
 
             cb(invalidInputError);
@@ -81,7 +81,7 @@ module.exports = {
 
          try {
             const list = await req.retry(() =>
-               AB.objectProcessForm().model().find(cond, req)
+               AB.objectProcessForm().model().find(cond, req),
             );
 
             if (list) {
@@ -144,7 +144,7 @@ module.exports = {
                         await req.retry(() =>
                            AB.objectProcessInstance()
                               .model()
-                              .find({ uuid: l.process }, req)
+                              .find({ uuid: l.process }, req),
                         )
                      )[0];
 
@@ -163,7 +163,7 @@ module.exports = {
                            users.map(async (u) => {
                               const user = { username: u };
                               const data = await req.retry(() =>
-                                 query.model().findAll({}, user, req)
+                                 query.model().findAll({}, user, req),
                               );
 
                               return Object.assign({}, user, {
@@ -176,7 +176,7 @@ module.exports = {
                                     };
                                  }),
                               });
-                           })
+                           }),
                         );
 
                      // The main goal of this function is to compare the output of the "getDataQueries" function
@@ -189,7 +189,7 @@ module.exports = {
                               (d) =>
                                  dataProcessInstance.context.input[
                                     d.columnName
-                                 ] == d.value
+                                 ] == d.value,
                            )
                               ? true
                               : false;
@@ -220,7 +220,7 @@ module.exports = {
                                     const queryID = rule.value.split(":")[0];
                                     const query = AB.queryByID(queryID);
                                     const objects = query.objectIDs.map((id) =>
-                                       AB.objectByID(id)
+                                       AB.objectByID(id),
                                     );
 
                                     for (const obj of objects) {
@@ -247,8 +247,8 @@ module.exports = {
                                              await getDataQueries(
                                                 query,
                                                 field,
-                                                alias2Obj
-                                             )
+                                                alias2Obj,
+                                             ),
                                           );
 
                                        case "not_in_query":
@@ -257,18 +257,18 @@ module.exports = {
                                              await getDataQueries(
                                                 query,
                                                 field,
-                                                alias2Obj
-                                             )
+                                                alias2Obj,
+                                             ),
                                           );
 
                                        default:
                                           return false;
                                     }
                                  }
-                              })
+                              }),
                            )
                         ).reduce(
-                           getFunctionParseBoolean(filterConditions.glue)
+                           getFunctionParseBoolean(filterConditions.glue),
                         );
 
                         return isCorrectProcessForm;
