@@ -47,7 +47,7 @@ var TIMER = {
       TIMER_POOLS[tenantID][element.id] = cron.schedule(cronExpression, () => {
          // start the processs task
          req.log(
-            `::: TRIGGER CRON job [${cronExpression}] - ${element.id} - ${element.triggerKey}`
+            `::: TRIGGER CRON job [${cronExpression}] - ${element.id} - ${element.triggerKey}`,
          );
 
          req.serviceRequest(
@@ -65,7 +65,7 @@ var TIMER = {
                   });
                }
                req.log("Timer Started");
-            }
+            },
          );
       });
    },

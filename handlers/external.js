@@ -74,7 +74,7 @@ module.exports = {
                response,
                responder: user,
                status: "processed",
-            })
+            }),
          );
 
          cb();

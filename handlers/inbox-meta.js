@@ -73,7 +73,7 @@ module.exports = {
          // under the Application it is registered under.
          AB.applications().forEach((app) => {
             var matchingProcesses = app.processes(
-               (p) => ids.indexOf(p.id) > -1
+               (p) => ids.indexOf(p.id) > -1,
             );
             if (matchingProcesses.length > 0) {
                var obj = app.toObj();

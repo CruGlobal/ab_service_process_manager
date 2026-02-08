@@ -58,11 +58,11 @@ module.exports = {
 
             AB.processes((p) => {
                if (!p) return;
-      
+
                let triggerTimers = p.elements(
-                  (e) => e instanceof ABProcessTriggerTimer && e.isEnabled
+                  (e) => e instanceof ABProcessTriggerTimer && e.isEnabled,
                );
-      
+
                if (triggerTimers && triggerTimers.length) {
                   triggerTimers.forEach((e) => {
                      ActiveTimer.start(req, e);
@@ -74,9 +74,10 @@ module.exports = {
          })
          .catch((err) => {
             req.notify.developer(err, {
-               context: "Service:process_manager.initialize_timer: Error initializing ABFactory"
+               context:
+                  "Service:process_manager.initialize_timer: Error initializing ABFactory",
             });
             cb(err);
          });
-   }
+   },
 };
