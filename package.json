@@ -1,5 +1,6 @@
 {
    "name": "process_manager",
+   "type": "module",
    "version": "1.2.15+p11406.c21300",
    "description": "(AppBuilder) a micro service to manage our process tasks",
    "main": "app.js",

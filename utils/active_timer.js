@@ -1,4 +1,4 @@
-const cron = require("node-cron");
+import cron from "node-cron";
 
 var TIMER_POOLS = {};
 
@@ -91,4 +91,4 @@ var TIMER = {
    },
 };
 
-module.exports = TIMER;
+export default TIMER;

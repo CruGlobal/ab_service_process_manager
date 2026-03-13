@@ -1,10 +1,10 @@
 /*
  * process_manager
  */
-const AB = require("@digiserve/ab-utils");
+import AB from "@digiserve/ab-utils";
 const env = AB.defaults.env;
 
-module.exports = {
+export default {
    process_manager: {
       /*************************************************************************/
       /* enable: {bool} is this service active?                                */
