@@ -1,6 +1,6 @@
 {
    "name": "process_manager",
-   "version": "1.2.23+p11416.c21600",
+   "version": "1.2.24+p11417.c21700",
    "description": "(AppBuilder) a micro service to manage our process tasks",
    "main": "app.js",
    "author": "Johnny Hausman",
@@ -13,7 +13,7 @@
       "moment": "^2.29.1",
       "node-cron": "^3.0.0",
       "objection": "^3.1.5",
-      "semver": "^7.8.4",
+      "semver": "^7.8.5",
       "serialize-error": "^8.0.1",
       "xml-js": "^1.6.11"
    },
