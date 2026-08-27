@@ -2,8 +2,12 @@
 // process_manager
 // (AppBuilder) a micro service to manage our process tasks
 //
-const AB = require("@digiserve/ab-utils");
-const { version } = require("./package");
+import AB from "@digiserve/ab-utils";
+import { createRequire } from "module";
+
+const require = createRequire(import.meta.url);
+const { version } = require("./package.json");
+
 // Use sentry by default, but can override with env.TELEMETRY_PROVIDER
 if (AB.defaults.env("TELEMETRY_PROVIDER", "sentry") == "sentry") {
    AB.telemetry.init("sentry", {
