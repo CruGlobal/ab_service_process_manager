@@ -4,7 +4,7 @@
  * application-processes necessary for the UI to create the Inbox accordion
  */
 
-const ABBootstrap = require("../AppBuilder/ABBootstrap");
+import ABBootstrap from "../AppBuilder/ABBootstrap.js";
 // {ABBootstrap}
 // responsible for initializing and returning an {ABFactory} that will work
 // with the current tenant for the incoming request.
@@ -20,7 +20,7 @@ function packageProcess(descApp, processes) {
    });
 }
 
-module.exports = {
+export default {
    /**
     * Key: the cote message key we respond to.
     */
@@ -73,7 +73,7 @@ module.exports = {
          // under the Application it is registered under.
          AB.applications().forEach((app) => {
             var matchingProcesses = app.processes(
-               (p) => ids.indexOf(p.id) > -1
+               (p) => ids.indexOf(p.id) > -1,
             );
             if (matchingProcesses.length > 0) {
                var obj = app.toObj();

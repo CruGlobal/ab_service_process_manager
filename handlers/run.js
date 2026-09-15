@@ -4,12 +4,12 @@
  * process to perform the next steps in the process.
  */
 
-const ABBootstrap = require("../AppBuilder/ABBootstrap");
+import ABBootstrap from "../AppBuilder/ABBootstrap.js";
 // {ABBootstrap}
 // responsible for initializing and returning an {ABFactory} that will work
 // with the current tenant for the incoming request.
 
-module.exports = {
+export default {
    /**
     * Key: the cote message key we respond to.
     */
@@ -45,7 +45,7 @@ module.exports = {
             req.retry(() =>
                AB.objectProcessInstance()
                   .model()
-                  .find({ uuid: instanceID }, req)
+                  .find({ uuid: instanceID }, req),
             )
                .then((list) => {
                   var allRuns = [];
@@ -55,7 +55,7 @@ module.exports = {
                      var processPI = AB.processByID(pi.processID);
                      if (!processPI) {
                         var piError = new Error(
-                           "ProcessInstance could not find parent Process"
+                           "ProcessInstance could not find parent Process",
                         );
                         AB.notify.builder(piError, {
                            instanceID,
@@ -74,7 +74,7 @@ module.exports = {
                         req.log(
                            `ran ${allRuns.length} task${
                               allRuns.length != 1 ? "s" : ""
-                           }`
+                           }`,
                         );
                         cb(null, allRuns.length);
                      })

@@ -3,14 +3,14 @@
  * our Request handler.
  */
 
-const ABBootstrap = require("../AppBuilder/ABBootstrap");
-const ActiveTimer = require("../utils/active_timer");
-const ABProcessTriggerTimer = require("../AppBuilder/platform/process/tasks/ABProcessTriggerTimer");
+import ABBootstrap from "../AppBuilder/ABBootstrap.js";
+import ActiveTimer from "../utils/active_timer.js";
+import ABProcessTriggerTimer from "../AppBuilder/platform/process/tasks/ABProcessTriggerTimer.js";
 // {ABBootstrap}
 // responsible for initializing and returning an {ABFactory} that will work
 // with the current tenant for the incoming request.
 
-module.exports = {
+export default {
    /**
     * Key: the cote message key we respond to.
     */
@@ -58,11 +58,11 @@ module.exports = {
 
             AB.processes((p) => {
                if (!p) return;
-      
+
                let triggerTimers = p.elements(
-                  (e) => e instanceof ABProcessTriggerTimer && e.isEnabled
+                  (e) => e instanceof ABProcessTriggerTimer && e.isEnabled,
                );
-      
+
                if (triggerTimers && triggerTimers.length) {
                   triggerTimers.forEach((e) => {
                      ActiveTimer.start(req, e);
@@ -74,9 +74,10 @@ module.exports = {
          })
          .catch((err) => {
             req.notify.developer(err, {
-               context: "Service:process_manager.initialize_timer: Error initializing ABFactory"
+               context:
+                  "Service:process_manager.initialize_timer: Error initializing ABFactory",
             });
             cb(err);
          });
-   }
+   },
 };
